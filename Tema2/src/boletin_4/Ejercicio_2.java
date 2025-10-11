@@ -70,6 +70,7 @@ public class Ejercicio_2 {
 			System.out.println("Existen\r\n"
 					+ "árboles de más de 30 m.");
 		}
+		sc.close();
 	}
 
 
