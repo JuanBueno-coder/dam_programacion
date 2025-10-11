@@ -13,7 +13,9 @@ public class Ejercicio_4 {
 		int numeroVotosA = 0;
 		int numeroVotosB = 0;
 		int abstenciones = 0;
-		int votosTotales = 0;
+		int totalVotosA = 0;
+		int totalVotosB = 0;
+		int totalAbstenciones = 0;
 		
 		String ProvinciaAFavorita = "";
 		String ProvinciaBFavorita = "";
@@ -32,8 +34,10 @@ public class Ejercicio_4 {
 			break;
 		case 3:
 			provincia = 6;
+			break;
 		case 4:
 			provincia =1;
+			break;
 		default:System.out.println("No has introducido un numero valido.");
 			break;
 		}
@@ -45,7 +49,7 @@ public class Ejercicio_4 {
 			
 			System.out.println("¿Número de votos obtenidos por el partido A?");
 			numeroVotosA = sc.nextInt();
-			
+			totalVotosA += numeroVotosA;
 			if(numeroVotosA>mayorVotosA) {
 				mayorVotosA = numeroVotosA;
 				ProvinciaAFavorita =nombreProvincia;
@@ -53,6 +57,7 @@ public class Ejercicio_4 {
 				
 			System.out.println("¿Número de votos obtenidos por el partido B?");
 			numeroVotosB = sc.nextInt();
+			totalVotosB += numeroVotosB;
 			if(numeroVotosB>mayorVotosB) {
 				mayorVotosB = numeroVotosB;
 				ProvinciaBFavorita =nombreProvincia;
@@ -60,11 +65,17 @@ public class Ejercicio_4 {
 			
 			System.out.println("¿Número de abstenciones?");
 			abstenciones =sc.nextInt();
+			totalAbstenciones += abstenciones; 
 			if(abstenciones>100000)altaAbstencion=true;
 		}
-		 votosTotales= numeroVotosA+numeroVotosB;
-		System.out.println("Porcentaje de votos totales: "+ (votosTotales*100)/votosTotales+abstenciones);
-		System.out.println("Porcentaje de abstenciones: "+(((votosTotales*100)/votosTotales+abstenciones)-100)+"%");
+		int votosTotales = totalVotosA + totalVotosB;
+		int censoTotal = votosTotales + totalAbstenciones;
+
+		double porcentajeVotos = (votosTotales * 100.0) / censoTotal;
+		double porcentajeAbstencion = (totalAbstenciones * 100.0) / censoTotal;
+
+		System.out.println("Porcentaje de votos totales: " + porcentajeVotos + "%");
+		System.out.println("Porcentaje de abstenciones: " + porcentajeAbstencion + "%");
 		System.out.println("El partido A obtenido mas votos en: "+ProvinciaAFavorita);
 		System.out.println("El partido B obtenido mas votos en: "+ProvinciaBFavorita);
 		if (altaAbstencion) System.out.println("Alta abstención");
