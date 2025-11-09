@@ -2,31 +2,27 @@ package boletin1;
 
 import java.util.Scanner;
 
-public class Ejercicio7 {
+public class Ejercicio8 {
 	public static void main(String[] args) {
 		System.out.println("Introduce un numero");
 		Scanner sc = new Scanner(System.in);
 		int numero = sc.nextInt();
-
-		if(esPrimo(numero)) System.out.println("Es primo");
-		else {
-			System.out.println("no es primo");
-		}
+		System.out.println("El numero de numeros primos que contiene "+numero+ " es "+numDivisoresPrimos(numero));
+		
 		sc.close();
 	}
-	
-	public static boolean esPrimo(int num) {
+	public static int numDivisoresPrimos(int num) {
 		
-		int contador = 0;
+		int numeroDePrimos=0;
 		for (int i = 1; i < num; i++) {
 			
 			if (num%i==0){
-				contador++;
+				numeroDePrimos++;
 			}
 		}
-		boolean esPrimo= false;
-		if(contador<=1)esPrimo=true;
 		
-		return esPrimo;
+		
+		return numeroDePrimos-1;
 	}
+
 }
